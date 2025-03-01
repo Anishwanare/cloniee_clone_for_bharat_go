@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { MdOutlineShoppingCart, MdMenu, MdClose } from "react-icons/md";
 import { RiAccountPinCircleLine } from "react-icons/ri";
 import { useCart } from '../context/AppContext';
@@ -7,6 +7,18 @@ import { useCart } from '../context/AppContext';
 const Header = ({ setCategory }) => {
     const { cartItem, setModel } = useCart();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navigate = useNavigate()
+
+
+    useEffect(() => {
+        const credential = localStorage.getItem('login')
+        if (!credential) {
+            navigate("/login")
+        }
+        else {
+            navigate('/')
+        }
+    }, [navigate])
 
     return (
         <div className='flex justify-between items-center shadow-md p-5 w-full bg-white sticky top-0 z-50'>
@@ -36,6 +48,7 @@ const Header = ({ setCategory }) => {
                             </div>
                         )}
                     </li>
+                    <li>Logout</li>
                 </ul>
 
                 <button className='md:hidden text-2xl' onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -66,6 +79,10 @@ const Header = ({ setCategory }) => {
                             )}
                         </div>
                     </div>
+                    <div className='mt-5 bg-red-500 w-36 mx-6 text-center p-2 rounded-lg text-lg font-bold text-white' onClick={() => {
+                        localStorage.removeItem("login")
+                        navigate('/login')
+                    }}>Logout</div>
                 </div>
             )}
         </div>

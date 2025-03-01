@@ -1,10 +1,11 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom"
 import Home from './pages/Home'
 import Orders from './pages/Orders'
 import Login from './components/Login'
 
 const App = () => {
+
   return (
     <div className=' bg-gradient-to-b from-teal-50 to-orange-50'>
       <Router>
