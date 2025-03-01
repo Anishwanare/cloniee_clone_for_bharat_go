@@ -39,7 +39,6 @@ const Header = ({ setCategory }) => {
                     <Link to={'/my-orders'}>
                         <li className='cursor-pointer'>My Orders</li>
                     </Link>
-                    <Link><li className='cursor-pointer text-2xl'><RiAccountPinCircleLine /></li></Link>
                     <li className='cursor-pointer text-2xl relative' onClick={() => setModel(true)}>
                         <MdOutlineShoppingCart />
                         {cartItem?.length > 0 && (
@@ -48,7 +47,10 @@ const Header = ({ setCategory }) => {
                             </div>
                         )}
                     </li>
-                    <li>Logout</li>
+                    <li className=' bg-red-500 mx-6 text-center p-2 rounded-lg text-base font-bold text-white' onClick={() => {
+                        localStorage.removeItem("login")
+                        navigate('/login')
+                    }}><button>Logout</button></li>
                 </ul>
 
                 <button className='md:hidden text-2xl' onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -69,7 +71,6 @@ const Header = ({ setCategory }) => {
                     <div className='mt-6 flex flex-col gap-4 items-center w-full'>
                         <p className='text-gray-500 text-sm'>anishwanare@gmail.com</p>
                         <Link to={'/my-orders'} className='text-lg cursor-pointer hover:underline'>My Orders</Link>
-                        <Link className='text-2xl cursor-pointer'><RiAccountPinCircleLine /></Link>
                         <div className='relative cursor-pointer text-2xl' onClick={() => setModel(true)}>
                             <MdOutlineShoppingCart />
                             {cartItem?.length > 0 && (
@@ -79,10 +80,7 @@ const Header = ({ setCategory }) => {
                             )}
                         </div>
                     </div>
-                    <div className='mt-5 bg-red-500 w-36 mx-6 text-center p-2 rounded-lg text-lg font-bold text-white' onClick={() => {
-                        localStorage.removeItem("login")
-                        navigate('/login')
-                    }}>Logout</div>
+
                 </div>
             )}
         </div>
