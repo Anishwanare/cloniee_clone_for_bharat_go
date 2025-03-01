@@ -16,8 +16,6 @@ const Login = () => {
         navigate('/')
     };
 
-
-
     return (
         <div className="flex items-center justify-center min-h-screen mx-6">
             <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">

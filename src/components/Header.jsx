@@ -15,9 +15,6 @@ const Header = ({ setCategory }) => {
         if (!credential) {
             navigate("/login")
         }
-        else {
-            navigate('/')
-        }
     }, [navigate])
 
     return (
