@@ -66,7 +66,7 @@ const Card = ({ products }) => {
                         <img
                             src={selectedProduct?.images?.[0]}
                             alt={selectedProduct?.title}
-                            className="w-full h-64 object-cover rounded-lg"
+                            className="w-full h-40 sm:h-64 object-contain rounded-lg"
                             loading="lazy"
                         />
 
